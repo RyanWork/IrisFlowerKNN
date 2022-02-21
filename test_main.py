@@ -3,11 +3,11 @@ import unittest
 from main import KNearestNeighbour
 
 euclidian_distance_params = [
-    [[1], [0], 1],
-    [[0], [0], 0],
-    [[1, 2, 3], [1, 2, 3], 0],
-    [[5, 2, 7], [3, 2, 11], 4.47213595499958],
-    [[2, 1], [5, 14], 13.341664064126334]
+    [[1, "filler"], [0, "filler"], 1],
+    [[0, "filler"], [0, "filler"], 0],
+    [[1, 2, 3, "filler"], [1, 2, 3, "filler"], 0],
+    [[5, 2, 7, "filler"], [3, 2, 11, "filler"], 4.47213595499958],
+    [[2, 1, "filler"], [5, 14, "filler"], 13.341664064126334]
 ]
 
 
