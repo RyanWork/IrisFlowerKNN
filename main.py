@@ -15,9 +15,21 @@ class KNearestNeighbour:
 
         sum_squares = 0
         for index in range(len(row1) - 1):
-            sum_squares += pow((row1[index] - row2[index]), 2)
+            sum_squares += pow((row1[index] - float(row2[index])), 2)
 
         return sqrt(sum_squares)
+
+    def nearest_neighbour(self, training_row, num_neighbours=1):
+        neighbours = []
+        with open('./data/iris.csv') as data_file:
+            line = data_file.readline()
+            while line:
+                distance = self.euclidian_distance(training_row, line.split(','))
+                line = data_file.readline()
+                neighbours.append((distance, line))
+
+        neighbours.sort(key=lambda tup: tup[0], reverse=True)
+        return neighbours[0:num_neighbours] if num_neighbours <= len(neighbours) - 1 else neighbours
 
 
 # Press the green button in the gutter to run the script.
