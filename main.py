@@ -25,10 +25,10 @@ class KNearestNeighbour:
             line = data_file.readline()
             while line:
                 distance = self.euclidian_distance(training_row, line.split(','))
-                line = data_file.readline()
                 neighbours.append((distance, line))
+                line = data_file.readline()
 
-        neighbours.sort(key=lambda tup: tup[0], reverse=True)
+        neighbours.sort(key=lambda tup: tup[0])
         return neighbours[0:num_neighbours] if num_neighbours <= len(neighbours) - 1 else neighbours
 
 

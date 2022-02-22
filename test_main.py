@@ -35,8 +35,17 @@ class Testing(unittest.TestCase):
 
         result = sut.nearest_neighbour(training_row)
 
-        self.assertEqual(result[0][0], 8.149233092751736)
-        self.assertEqual(result[0][1], '6.4,2.8,5.6,2.2,Iris-virginica\n')
+        self.assertEqual(result[0][0], 4.795831523312719)
+        self.assertEqual(result[0][1], '4.9,2.5,4.5,1.7,Iris-virginica\n')
+
+    def test_nearest_neighbour_exact_vector_should_match_self(self):
+        training_row = [5.1, 3.8, 1.5, 0.3, 9999]
+        sut = KNearestNeighbour()
+
+        result = sut.nearest_neighbour(training_row)
+
+        self.assertEqual(result[0][0], 0)
+        self.assertEqual(result[0][1], '5.1,3.8,1.5,0.3,Iris-setosa\n')
 
     def test_nearest_neighbour_max_num_neighbours_returns_entire_dataset(self):
         training_row = [1, 2, 3, 4, 5]
@@ -44,8 +53,6 @@ class Testing(unittest.TestCase):
 
         result = sut.nearest_neighbour(training_row, 9999)
 
-        self.assertEqual(result[0][0], 8.149233092751736)
-        self.assertEqual(result[0][1], '6.4,2.8,5.6,2.2,Iris-virginica\n')
         self.assertEqual(len(result), 150)
 
 
